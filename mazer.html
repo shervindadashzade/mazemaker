@@ -80,7 +80,9 @@ function clicked(id){
 	}
 }
 function accept(){
-	alert(homes);
+	console.log(homes);
+	sessionStorage.setItem("homes",homes);
+	window.open("proc.html")
 }
 </script>
 
