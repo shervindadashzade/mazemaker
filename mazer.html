@@ -1,0 +1,87 @@
+<html>
+<head>
+	<title>--- هزار توی خودت رو بساز ---</title>
+   <link rel="stylesheet" type="text/css" href="style.css">
+   <meta charset='UTF-8'> 
+</head>
+
+	<body>
+	<div id="title">ساخت هزار تو</div>
+	<table id='maze'>
+	</table>
+
+<div id="under">
+<div id="res"> خانه شروع را انتخاب کنید </div>
+<div id="accept" onclick="accept()">تایید </div>
+<div id="about">
+just for fun build by shervin dadashzade 
+</br>
+create your maze and let the computer solve it and then come to learn about its algorithm
+</div>
+</div>
+
+</body>
+
+<script>
+var homes = [
+["empty","empty","empty","empty","empty","empty"],
+["empty","empty","empty","empty","empty","empty"],
+["empty","empty","empty","empty","empty","empty"],
+["empty","empty","empty","empty","empty","empty"],
+["empty","empty","empty","empty","empty","empty"],
+["empty","empty","empty","empty","empty","empty"]
+];
+var index = 0;
+var i = 0;
+var j = 0;
+for (i=0;i<6;i++){
+	var tbl = document.getElementById("maze");
+	var row = tbl.insertRow(i);
+	for(j=0;j<6;j++){
+		var cel = row.insertCell(j);
+		cel.innerHTML = "خالی";
+		cel.id = j.toString()+i.toString();
+		cel.onclick = function(){clicked(this.id)};
+	}
+
+}
+
+function clicked(id){
+	if(index == 2){
+		var cel_selected = document.getElementById(id);
+		if(cel_selected.innerHTML == "شروع"){
+			alert("اینجا خانه شروع است");
+		}else if(cel_selected.innerHTML == "مقصد"){
+			alert("اینجا خانه مقصد است");
+		}else{
+		homes[id[1]][id[0]] = "wall";
+		cel_selected.style.background = "#cc0000";
+		cel_selected.innerHTML = "دیوار";
+	    }
+	}
+	if(index == 1){
+		var cel_selected = document.getElementById(id);
+		cel_selected.style.background = "#ffff00";
+		cel_selected.innerHTML = "مقصد"
+		index++;
+		homes[id[1]][id[0]] = "end";
+		document.getElementById("res").innerHTML = "دیوار ها را انتخاب کنید";
+		document.getElementById("res").style.color = "#cc0000";
+	}
+
+	if(index == 0){
+		var cel_selected = document.getElementById(id);
+		cel_selected.style.background = "#53ff1a";
+		cel_selected.innerHTML = "شروع"
+		index++;
+		homes[id[1]][id[0]] = "start";
+		document.getElementById("res").innerHTML = "خانه مقصد را انتخاب کنید ";
+		document.getElementById("res").style.color = "#ffff00";
+	}
+}
+function accept(){
+	alert(homes);
+}
+</script>
+
+</html>
