@@ -18,17 +18,23 @@
 </body>
 
 <script type="text/javascript">
+var radif = sessionStorage.getItem("radif");
+var soton = sessionStorage.getItem("soton");
+
 var state = [false,false,false,false];
 var solved = false;
 // homes [y][x]
-var homes = [
-["empty","empty","empty","empty","empty","empty"],
-["empty","empty","empty","empty","empty","empty"],
-["empty","empty","empty","empty","empty","empty"],
-["empty","empty","empty","empty","empty","empty"],
-["empty","empty","empty","empty","empty","empty"],
-["empty","empty","empty","empty","empty","empty"]
-];
+var homes = [];
+var i =0;
+var j=0;
+for(j=0;j<radif;j++){
+	var cel1 = []
+	for(i=0;i<soton;i++){
+		cel1.push("empty");
+	}
+	homes.push(cel1);
+}
+
 
 var homes_str = sessionStorage.getItem("homes");
 var homes_spil = homes_str.split(",");
@@ -38,8 +44,8 @@ var index=0
 
 var x_start=0;
 var y_start=0;
-for(j=0;j<6;j++){
-	for(i=0;i<6;i++){
+for(j=0;j<radif;j++){
+	for(i=0;i<soton;i++){
 		homes[j][i] = homes_spil[index];
 		if(homes_spil[index] == "start"){
 			x_start = i;
@@ -49,7 +55,7 @@ for(j=0;j<6;j++){
 	}
 }
 
-
+console.log(homes);
 setthehomes(x_start,y_start,1);
 
 show(homes);
@@ -69,7 +75,7 @@ if(solved){
  	return 0;
 
 }else{
-if(-1<y-1 && y-1<6){
+if(-1<y-1 && y-1<radif){
 	if(homes[y-1][x] == 'end'){
 		solved = true;
 		return 0;
@@ -81,7 +87,7 @@ if(-1<y-1 && y-1<6){
 
 
 
-if(-1<y+1 && y+1<6){
+if(-1<y+1 && y+1<radif){
 	if(homes[y+1][x] == 'end'){
 		solved = true;
 		return 0;
@@ -93,7 +99,7 @@ if(-1<y+1 && y+1<6){
 
 
 
-if(-1<x-1 && x-1<6){
+if(-1<x-1 && x-1<soton){
 	if(homes[y][x-1] == 'end'){
 		solved = true;
 		return 0;
@@ -106,7 +112,7 @@ if(-1<x-1 && x-1<6){
 
 
 
-if(-1<x+1 && x+1<6){
+if(-1<x+1 && x+1<soton){
 	if(homes[y][x+1] == 'end'){
 		solved = true;
 		return 0;
@@ -126,10 +132,10 @@ if(-1<x+1 && x+1<6){
 function show(home){
 	var i=0;
 	var j=0;
-	for (i=0;i<6;i++){
+	for (i=0;i<radif;i++){
 	var tbl = document.getElementById("show");
 	var row = tbl.insertRow(i);
-	for(j=0;j<6;j++){
+	for(j=0;j<soton;j++){
 		var cel = row.insertCell(j);
 		cel.innerHTML = homes[i][j];
 		if(homes[i][j] == "wall"){

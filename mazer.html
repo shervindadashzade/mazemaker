@@ -23,30 +23,38 @@ create your maze and let the computer solve it and then come to learn about its 
 </body>
 
 <script>
-var homes = [
-["empty","empty","empty","empty","empty","empty"],
-["empty","empty","empty","empty","empty","empty"],
-["empty","empty","empty","empty","empty","empty"],
-["empty","empty","empty","empty","empty","empty"],
-["empty","empty","empty","empty","empty","empty"],
-["empty","empty","empty","empty","empty","empty"]
-];
+var radif = sessionStorage.getItem("radif");
+var soton = sessionStorage.getItem("soton");
+console.log(radif + ","+soton);
+
+var homes = [];
+var i =0;
+var j=0;
+for(j=0;j<radif;j++){
+	var cel1 = []
+	for(i=0;i<soton;i++){
+		cel1.push("empty");
+	}
+	homes.push(cel1);
+}
+
 var index = 0;
 var i = 0;
 var j = 0;
-for (i=0;i<6;i++){
+for (i=0;i<radif;i++){
 	var tbl = document.getElementById("maze");
 	var row = tbl.insertRow(i);
-	for(j=0;j<6;j++){
+	for(j=0;j<soton;j++){
 		var cel = row.insertCell(j);
 		cel.innerHTML = "خالی";
-		cel.id = j.toString()+i.toString();
+		cel.id = j.toString()+","+i.toString();
 		cel.onclick = function(){clicked(this.id)};
 	}
 
 }
 
 function clicked(id){
+	id = id.split(",");
 	if(index == 2){
 		var cel_selected = document.getElementById(id);
 		if(cel_selected.innerHTML == "شروع"){
@@ -80,9 +88,15 @@ function clicked(id){
 	}
 }
 function accept(){
+	if(index != 2){
+		alert("ابتدا مبدا و مقصد را انتخاب کنید ")
+	}else{
 	console.log(homes);
 	sessionStorage.setItem("homes",homes);
-	window.open("proc.html")
+	sessionStorage.setItem("radif",radif);
+	sessionStorage.setItem("soton",soton);
+	window.open("proc.html","_self");
+   	}
 }
 </script>
 

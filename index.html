@@ -1,0 +1,26 @@
+<html>
+<head>
+	<title>-−- خوش امدید −−−</title>
+	<meta charset="utf-8" />
+</head>
+<body>
+	radif:<input id="radif" type="number" value="6">
+	<br/><br/>
+	X
+</br></br>
+soton:<input id="soton" type="number" value="6">
+<br/><br/>
+<button onclick="accept()">accept</button>
+</body>
+
+<script>
+function accept(){
+	var radif = document.getElementById("radif").value;
+	var soton = document.getElementById("soton").value;
+	sessionStorage.setItem("radif",radif);
+	sessionStorage.setItem("soton",soton);
+	window.open("mazer.html","_self")
+}
+</script>
+
+</html>
