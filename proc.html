@@ -13,6 +13,10 @@
 <div id="under">
 <div id="res"></br>
 </div>
+
+</br>
+<div id="accept" onclick="tryagain()">دوباره از اول </div>
+
 </div>
 </div>
 </body>
@@ -20,6 +24,10 @@
 <script type="text/javascript">
 var radif = sessionStorage.getItem("radif");
 var soton = sessionStorage.getItem("soton");
+
+if(radif == null){
+	window.open("index.html","_self");
+}else{
 
 var state = [false,false,false,false];
 var solved = false;
@@ -128,7 +136,7 @@ if(-1<x+1 && x+1<soton){
   if(state[3]){  setthehomes(x+1,y,level+1); }
 
 }
-
+}
 function show(home){
 	var i=0;
 	var j=0;
@@ -155,6 +163,14 @@ function show(home){
 		}
 	}
 }
+}
+
+
+function tryagain(){
+	sessionStorage.removeItem("radif");
+	sessionStorage.removeItem("soton");
+	sessionStorage.removeItem("homes");
+	window.open("index.html","_self");
 }
 </script>
 

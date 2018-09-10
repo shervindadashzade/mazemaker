@@ -14,18 +14,23 @@
 <div id="res"> خانه شروع را انتخاب کنید </div>
 <div id="accept" onclick="accept()">تایید </div>
 <div id="about">
-just for fun build by shervin dadashzade 
+فقط برای تفریح 
 </br>
-create your maze and let the computer solve it and then come to learn about its algorithm
+هزار توی خودتو بساز و ببین جواب داره یا نه 
 </div>
 </div>
 
 </body>
 
 <script>
+
 var radif = sessionStorage.getItem("radif");
 var soton = sessionStorage.getItem("soton");
-console.log(radif + ","+soton);
+
+if(radif == null){
+	window.open("index.html","_self");
+}else{
+
 
 var homes = [];
 var i =0;
@@ -51,6 +56,7 @@ for (i=0;i<radif;i++){
 		cel.onclick = function(){clicked(this.id)};
 	}
 
+}
 }
 
 function clicked(id){

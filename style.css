@@ -1,3 +1,7 @@
+*{
+	padding: 0px;
+	margin: 0px;
+}
 #maze{
 	width: 100%;
 	border: 1px solid black;
@@ -70,4 +74,20 @@ background: #cc3300;
 	width: 100%;
 	border: 1px solid black;
 	padding: 0px;
+}
+#header{
+	width: 100%;
+	padding: 20px;
+	text-align: center;
+	font-size: 50px;
+	background: #004d66;
+	color: white;
+}
+#box{
+	background: #edebde;
+	width: 30%;
+	height: 200px;
+	padding: 30px;
+	margin: 30px auto;
+	text-align: center;
 }
